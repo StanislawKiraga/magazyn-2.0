@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Load products</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export products</button>
+      </div>
+    </div>
+</div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Unit</th>
+              <th>Unit price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+                <tr>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.unit }}</td>
+                  <td>{{ item.unit_price }}</td>
+                  <td><button type="submit" class="">Sell product</button></td>
+                </tr>
+            {% endfor %}
+            <form method="POST" action="/products">
+                {% for field in form %}
+                    <td>{{ field }}</td>                   
+                {% endfor %}
+                <td><button type="submit" class="btn btn-info">Add product</button></td>
+            </form>
+          </tbody>
+        </table>
+    </div>
+    
+{% endblock %}
