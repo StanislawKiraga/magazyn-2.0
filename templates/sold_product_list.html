@@ -4,11 +4,11 @@
 
 <br><br>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Dashboard</h1>
+    <h1 class="h2">Sold items</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
         <button type="button" class="btn btn-sm btn-outline-secondary">Load from file</button>
-        <a href="{{ url_for('export') }}" class="btn btn-sm btn-outline-secondary" role="button">Export to file</a>
+        <a href="" class="btn btn-sm btn-outline-secondary" role="button">Export to file</a>
       </div>   
     </div>
 </div>
@@ -24,7 +24,6 @@
       {% endfor %}
   {% endif %}
 {% endwith %}
-
     <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -36,28 +35,17 @@
             </tr>
           </thead>
           <tbody>
-            {% for item, info in items.items() %}
+            {% for item, info in sold_items.items() %}
                 <tr>
-                  <td>{{ info.name }}</td>
-                  <td>{{ info.quantity }}</td>
-                  <td>{{ info.unit }}</td>
-                  <td>{{ info.unit_price }}</td>
-                  <td>
-                    <form method="GET" action="{{ url_for('sell_product', product_name=item) }}">
-                      <button type="submit" class="btn btn-outline-dark">Sell product</button>
-                    </form>
-                  </td>
+                  <td>{{ info[0] }}</td>
+                  <td>{{ info[1] }}</td>
+                  <td>{{ info[2] }}</td>
+                  <td>{{ info[3] }}</td>
                 </tr>
             {% endfor %}
-            <form method="POST" action="/products">
-              {{ form.hidden_tag() }}
-                {% for field in form if field.widget.input_type != 'hidden' %}
-                    <td>{{ field }}</td>                   
-                {% endfor %}
-                <td><button type="submit" class="btn btn-info">Add product</button></td>
-            </form>
           </tbody>
         </table>
     </div>
     
 {% endblock %}
+    
