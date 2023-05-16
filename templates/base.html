@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url_for('product_list') }}">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
@@ -50,6 +50,12 @@
             <a class="nav-link" href="#">
               <span data-feather="dollar-sign"></span>
               Revenue
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sold_product_list') }}">
+              <span data-feather="dollar-sign"></span>
+              Sold items
             </a>
           </li>
         </ul>
